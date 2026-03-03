@@ -1,9 +1,11 @@
 app {
     display: flex;
     flex-direction: row;
+    width: 100vw;
 }
 
 p {
+    margin: 0;
     font-weight: 700;
     font-size: 22px;
     color: #32BCE0;
@@ -11,13 +13,13 @@ p {
 
 main {
     height: 100vh;
-    width: 83vw;
+    flex: 1;
     background-color: #161616;
 }
 
 panel {
     height: 100vh;
-    width: 17vw;
+    width: 260px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,7 +39,7 @@ panel {
     .add_reservation_section {
         height: 280px;
         width: 220px;
-        border: solid, 3px, #32BCE0;
+        border: solid 3px #32BCE0;
         border-radius: 15px;
         display: flex;
         flex-direction: column;
@@ -54,15 +56,72 @@ panel {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-around;
+            justify-content: space-between;
         }
         .add_reservation-row:nth-of-type(7) {
-            width: 170px;
+            width: 165px;
         }
+
+        .clickable:hover{
+            cursor: pointer;
+        }
+
         .add_reservation-row input {
             height: 18px;
-            width: 140px;
+            width: 150px;
             font-weight: 600;
             border: none;
             outline: none;
+        }
+
+    .income_section {
+        width: 260px;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: auto;
+    }
+
+        .income_row {
+            height: 30px;
+            width: 220px;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        .income_row_line {
+            position: relative;
+        }
+        .income_row_line::after {
+            content: "";
+            position: absolute;
+            border-bottom: 1px solid #32BCE0;
+            width: 100%;
+            align-self: flex-end;
+        }
+
+        .income_row_part {
+            height: 100%;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+        }
+        .income_row_part:nth-of-type(1) {
+            justify-content: left;
+            width: 60px;
+        }
+        .income_row_part:nth-of-type(2) {
+            justify-content: right;
+            width: 110px;
+        }
+        .income_row_part:nth-of-type(3) {
+            justify-content: left;
+            width: 40px;
+
+        }
+        .income_quantity {
+            color: white;
         }
