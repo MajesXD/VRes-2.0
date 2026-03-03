@@ -16,6 +16,7 @@ import Card from './assets/Card';
 import KmMb from './assets/KmMb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
+import Reservation from './Reservation';
 
 function App() {
 
@@ -106,8 +107,20 @@ function App() {
           </div>
         </section>
       </panel>
-      <main>
-      </main>
+
+        <main>
+          <div className='table_hour'><p>15:00</p>
+            <Reservation people='1' time='100'/>
+          </div>
+          <div className='table_hour'><p>16:00</p></div>
+            <Reservation people='1' time='100'/>
+          <div className='table_hour'><p>17:00</p></div>
+          <div className='table_hour'><p>18:00</p></div>
+          <div className='table_hour'><p>19:00</p></div>
+          <div className='table_hour'><p>20:00</p></div>
+          <div className='table_hour'><p>21:00</p></div>
+          <div className='table_hour'><p>22:00</p></div>
+        </main>
     </app>
   )
 }
