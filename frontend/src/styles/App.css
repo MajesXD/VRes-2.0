@@ -1,0 +1,68 @@
+app {
+    display: flex;
+    flex-direction: row;
+}
+
+p {
+    font-weight: 700;
+    font-size: 22px;
+    color: #32BCE0;
+}
+
+main {
+    height: 100vh;
+    width: 83vw;
+    background-color: #161616;
+}
+
+panel {
+    height: 100vh;
+    width: 17vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #242424;
+}
+
+    .date_section {
+        height: 40px;
+        width: 220px;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .add_reservation_section {
+        height: 280px;
+        width: 220px;
+        border: solid, 3px, #32BCE0;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 30px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        .add_reservation-row {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+        .add_reservation-row:nth-of-type(7) {
+            width: 170px;
+        }
+        .add_reservation-row input {
+            height: 18px;
+            width: 140px;
+            font-weight: 600;
+            border: none;
+            outline: none;
+        }
