@@ -1,21 +1,44 @@
 :root {
-    --heightx1: 3vh;
-    --widthx1: calc((100%) / 16 - 0.20vh);
+    --heightx1: 2.875vh;
+    --widthx1: calc((100%) / 8 - 0.30vh);
 }
 
 .reservation {
     display: flex;
+    flex-direction: column;
+    margin-top: 0.5vh;
+    border-radius: 20px;
+    background-color: #32BCE0;
+    box-sizing: border-box;
+    padding: 0.5vh;
+}
+
+.reservation p {
+    font-weight: 500;
+    font-size: 1.8vh;
+    color: black;
+}
+
+.reservation_row {
+    height: 2.625vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .people1 {
-    height: calc(var(--heightx1) * 4);
-    width: calc(var(--widthx1) * 3);
-    background-color: red;
+    width: calc(var(--widthx1) * 1);
     position: absolute;
-    grid-column: 2;
     grid-row: 1;
 }
 
 .time100 {
+    grid-column: 2;
+    height: calc(var(--heightx1) * 4);
+}
 
+.time030 {
+    grid-column: 2;
+    height: calc(var(--heightx1) * 2);
 }
