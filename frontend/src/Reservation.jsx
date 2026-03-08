@@ -7,8 +7,8 @@ import Phone from './assets/Phone';
 import WalkIn from './assets/WalkIn';
 const Reservation = ({people = '', time = ''}) => (
     <section className={`reservation people${people} time${time}`}>
-        <div className='reservation_row'><Person height={18} color='black'/><p>1</p><Clock height={18} color='black'/><p>2h</p></div>
-        <div className='reservation_row'><Web height={18} color='black'/><p></p></div>
+        <div className='reservation_row'><Person height={14} width={14} color='black'/><p>1</p><Clock height={14} width={14} color='black'/><p>2h</p></div>
+        <div className='reservation_row'><Web height={14} width={14}color='black'/><p></p></div>
     </section>
 
 )

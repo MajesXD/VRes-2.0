@@ -2,7 +2,9 @@ app {
     display: flex;
     flex-direction: row;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #161616;
 }
 
 p {
@@ -13,8 +15,8 @@ p {
 }
 
 panel {
-    height: 100vh;
-    width: 260px;
+    min-height: 100%;
+    width: 16%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,8 +24,8 @@ panel {
 }
 
     .date_section {
-        height: 40px;
-        width: 220px;
+        height: 5vh;
+        width: 85%;
         margin-top: 10px;
         display: flex;
         flex-direction: row;
@@ -32,8 +34,8 @@ panel {
     }
 
     .add_reservation_section {
-        height: 280px;
-        width: 220px;
+        height: 40vh;
+        width: 85%;
         border: solid 1px #32BCE0;
         border-radius: 15px;
         display: flex;
@@ -47,14 +49,14 @@ panel {
 
         .add_reservation-row {
             width: 100%;
-            height: 30px;
+            height: 100%;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
         }
         .add_reservation-row:nth-of-type(7) {
-            width: 165px;
+            width: 80%;
         }
 
         .clickable:hover{
@@ -63,27 +65,27 @@ panel {
         }
 
         .add_reservation-row input {
-            height: 18px;
-            width: 150px;
+            height: 50%;
+            width: 80%;
             font-weight: 600;
             border: none;
             outline: none;
         }
 
     .income_section {
-        width: 260px;
-        height: 500px;
+        height: 30vh;
+        width: 85%;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-top: auto;
+        margin-top: 10vh;
     }
 
         .income_row {
-            height: 30px;
-            width: 220px;
-            margin-top: 20px;
+            height: 10%;
+            width: 100%;
+            margin-top: 2.5vh;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -107,15 +109,15 @@ panel {
         }
         .income_row_part:nth-of-type(1) {
             justify-content: left;
-            width: 60px;
+            width: 20%;
         }
         .income_row_part:nth-of-type(2) {
             justify-content: right;
-            width: 110px;
+            width: 80%;
         }
         .income_row_part:nth-of-type(3) {
             justify-content: left;
-            width: 40px;
+            width: 20%;
 
         }
         .income_quantity {
@@ -123,24 +125,28 @@ panel {
         }
 
 main {
-    height: 100vh;
+    height: auto;
+    width: auto;
     overflow-y: auto;
     flex: 1;
+    box-sizing: border-box;
+    padding: 5px;
     background-color: #161616;
     position: relative;
-}
-.table_hour {
-    width: 100%;
-    height: 12vh;
-    margin-top: 0.5vh;
-    align-self: flex-end;
-    grid-column: 1;
+
     display: grid;
-    grid-template-columns: 100px repeat(8, auto);
-    grid-template-rows: repeat(4, 3.125vh);
-    column-gap: 0.5vh;
-    position: relative;
+    grid-template-columns: 100px repeat(8, 130px);
+    grid-template-rows: repeat(28, 24px);
+    row-gap: 3px;
+    column-gap: 5px;
 }
+
+.table_hour {
+    height: 40px;
+    grid-column: 1;
+    grid-row: 3;
+}
+
 .table_hour::after {
     content: "";
     background-color: #A3A3A3;
