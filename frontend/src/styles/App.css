@@ -143,8 +143,10 @@ main {
 
 .table_hour {
     height: 40px;
+    display: flex;
+    align-items: center;
     grid-column: 1;
-    grid-row: 3;
+    grid-row-end: ;
 }
 
 .table_hour::after {
