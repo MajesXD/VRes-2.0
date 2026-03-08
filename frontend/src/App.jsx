@@ -112,16 +112,16 @@ function App() {
           <div className='table_hour'>
             <p>15:00</p>
           </div>
-          <div className='table_hour'>
+          <div className='table_hour' style={{gridRow: 5}}>
             <p>15:00</p>
           </div>
-          <div className='table_hour'>
+          <div className='table_hour' style={{gridRow: 9}}>
             <p>15:00</p>
           </div>
-          <div className='table_hour'>
+          <div className='table_hour' style={{gridRow: 13}}>
             <p>15:00</p>
           </div>
-          <div className='table_hour'>
+          <div className='table_hour' style={{gridRow: 17}}>
             <p>15:00</p>
           </div>
 
