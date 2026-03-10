@@ -19,7 +19,6 @@ import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
 import Reservation from './Reservation';
 import Week from './Week';
-import Saturday from './Saturday';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 
@@ -39,40 +38,41 @@ function App() {
     setCurrentDate(newDate); 
   }
 
+
   return (
     <app>
 
       <panel>
         <section className='date_section'>
-          <ArrowLeft className='clickable' height={20} onClick={previousDate}/>
+          <ArrowLeft className='clickable' onClick={previousDate}/>
           <p>{currentDate.toLocaleDateString()}</p>
-          <Callendar className='clickable' height={20}/>
-          <ArrowRight className='clickable' height={20} onClick={nextDate}/>
+          <Callendar className='clickable'/>
+          <ArrowRight className='clickable' onClick={nextDate}/>
         </section>
         <form className='add_reservation_section'>
-          <div className='add_reservation-row' style={{width: '160px'}}>
-            <Web className={"clickable"} height={20}/>
-            <Phone className={"clickable"} height={20}/>
-            <WalkIn className={"clickable"} height={20}/>
+          <div className='add_reservation-row'>
+            <Web className={"clickable icon_choose"}/>
+            <Phone className={"clickable icon_choose"}/>
+            <WalkIn className={"clickable icon_choose"}/>
           </div>
           <div className='add_reservation-row'>
-            <Callendar color={colors.blue} height={18}/><input type="text" />
+            <Callendar color={colors.blue}/><input type="text" />
             </div>
           <div className='add_reservation-row'>
-            <PersonalID color={colors.blue} height={16}/><input type="text" />
+            <PersonalID color={colors.blue}/><input type="text" />
             </div>
           <div className='add_reservation-row'>
-            <Person color={colors.blue} height={18}/><input type="text" />
+            <Person color={colors.blue}/><input type="text" />
             </div>
           <div className='add_reservation-row'>
-            <Clock color={colors.blue} height={18}/><input type="text" />
+            <Clock color={colors.blue}/><input type="text" />
             </div>
           <div className='add_reservation-row'>
-            <Hourglass color={colors.blue} height={18}/><input type="text" />
+            <Hourglass color={colors.blue}/><input type="text" />
             </div>
           <div className='add_reservation-row clickable'>
-            <Plus height={18} />
-            <p style={{color: 'white', fontSize: '16px'}}>Dodaj rezerwację</p>
+            <Plus/>
+            <p style={{color: 'white', fontSize: '1vw'}}>Dodaj rezerwację</p>
             </div>
 
         </form>
@@ -128,7 +128,7 @@ function App() {
       </panel>
 
         <main>
-          <Week/>
+          <Week currentDate={currentDate} />
           <Reservation people={1} time={100}/>
         </main>
     </app>

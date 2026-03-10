@@ -10,7 +10,8 @@
     box-sizing: border-box;
     padding: 5px;
     grid-column: 2/4;
-    grid-row: 1/5;
+    grid-row: 9/13;
+    z-index: 100;
 }
 
 .reservation p {
