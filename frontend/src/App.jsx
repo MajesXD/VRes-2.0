@@ -85,31 +85,31 @@ function App() {
             </div>
 
           <div className='income_row'>
-            <div className='income_row_part'><Transfer color={colors.blue} height={20}/></div>
+            <div className='income_row_part'><Transfer color={colors.blue}/></div>
             <div className='income_row_part'><p className='income_quantity'>512</p></div>
             <div className='income_row_part'><p>zł</p></div>
           </div>
 
           <div className='income_row'>
-            <div className='income_row_part'><Card color={colors.blue} height={20}/></div>
+            <div className='income_row_part'><Card color={colors.blue}/></div>
             <div className='income_row_part'><p className='income_quantity'>138</p></div>
             <div className='income_row_part'><p>zł</p></div>
           </div>
 
           <div className='income_row'>
-            <div className='income_row_part'><Cash color={colors.blue} height={20} /></div>
+            <div className='income_row_part'><Cash color={colors.blue} /></div>
             <div className='income_row_part'><p className='income_quantity'>100</p></div>
             <div className='income_row_part'><p>zł</p></div>
           </div>
 
           <div className='income_row'>
-            <div className='income_row_part'><KmMb color={colors.blue} height={20} width={50}/></div>
+            <div className='income_row_part'><KmMb className='kmmb' color={colors.blue}/></div>
             <div className='income_row_part'><p className='income_quantity'>100,33</p></div>
             <div className='income_row_part'><p>zł</p></div>
           </div>
 
           <div className='income_row'>
-            <div className='income_row_part'><Voucher color={colors.blue} height={20}/></div>
+            <div className='income_row_part'><Voucher color={colors.blue}/></div>
             <div className='income_row_part'><p className='income_quantity'>2</p></div>
             <div className='income_row_part'><p>x</p></div>
           </div>
