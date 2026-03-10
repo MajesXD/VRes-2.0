@@ -1,4 +1,5 @@
 import './styles/App.css'
+import { useState } from "react";
 import {colors} from "./assets/colors";
 import ArrowLeft from './assets/ArrowLeft';
 import ArrowRight from './assets/ArrowRight';
@@ -17,20 +18,36 @@ import KmMb from './assets/KmMb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
 import Reservation from './Reservation';
-import DefaultWeek from './Week';
+import Week from './Week';
 import Saturday from './Saturday';
+import Calendar from "react-calendar";
+import 'react-calendar/dist/Calendar.css';
 
 function App() {
+
+  const [currentDate, setCurrentDate] = useState(new Date());
+
+  function previousDate() {
+    const newDate = new Date(currentDate);
+    newDate.setDate(currentDate.getDate() - 1);
+    setCurrentDate(newDate);
+  }
+
+  function nextDate() {
+    const newDate = new Date(currentDate);
+    newDate.setDate(currentDate.getDate() + 1);
+    setCurrentDate(newDate); 
+  }
 
   return (
     <app>
 
       <panel>
         <section className='date_section'>
-          <ArrowLeft height={20}/>
-          <p>01.01.1001</p>
-          <Callendar height={20}/>
-          <ArrowRight height={20}/>
+          <ArrowLeft className='clickable' height={20} onClick={previousDate}/>
+          <p>{currentDate.toLocaleDateString()}</p>
+          <Callendar className='clickable' height={20}/>
+          <ArrowRight className='clickable' height={20} onClick={nextDate}/>
         </section>
         <form className='add_reservation_section'>
           <div className='add_reservation-row' style={{width: '160px'}}>
@@ -111,7 +128,7 @@ function App() {
       </panel>
 
         <main>
-          <Saturday/>
+          <Week/>
           <Reservation people={1} time={100}/>
         </main>
     </app>

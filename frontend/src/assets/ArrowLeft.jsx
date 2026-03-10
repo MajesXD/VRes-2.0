@@ -1,5 +1,5 @@
-const ArrowLeft = ({ width = 32, height = 30, color = "white", className = ""}) => (
-<svg className={className} width={width} height={height} viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+const ArrowLeft = ({ onClick, width = 32, height = 30, color = "white", className = ""}) => (
+<svg className={className} width={width} height={height} onClick={onClick} viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18.3944 27.9906L16.8088 29.5157C16.1375 30.1614 15.0519 30.1614 14.3877 29.5157L0.503515 16.1678C-0.167838 15.5221 -0.167838 14.4779 0.503515 13.839L14.3877 0.484314C15.059 -0.161438 16.1446 -0.161438 16.8088 0.484314L18.3944 2.00939C19.0729 2.66201 19.0586 3.72681 18.3658 4.3657L9.75963 12.2521H30.2859C31.2358 12.2521 32 12.9872 32 13.9008V16.0992C32 17.0128 31.2358 17.7479 30.2859 17.7479H9.75963L18.3658 25.6343C19.0657 26.2732 19.08 27.338 18.3944 27.9906Z" fill={color}/>
 </svg>
 
