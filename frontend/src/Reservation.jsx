@@ -1,4 +1,4 @@
-import './styles/Reservation.css'
+import './styles/reservation.css'
 import {colors} from "./assets/colors";
 import Person from './assets/Person';
 import Clock from './assets/Clock';

@@ -17,6 +17,8 @@ import KmMb from './assets/KmMb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
 import Reservation from './Reservation';
+import DefaultWeek from './Week';
+import Saturday from './Saturday';
 
 function App() {
 
@@ -109,23 +111,8 @@ function App() {
       </panel>
 
         <main>
-          <div className='table_hour'>
-            <p>15:00</p>
-          </div>
-          <div className='table_hour' style={{gridRow: 5}}>
-            <p>15:00</p>
-          </div>
-          <div className='table_hour' style={{gridRow: 9}}>
-            <p>15:00</p>
-          </div>
-          <div className='table_hour' style={{gridRow: 13}}>
-            <p>15:00</p>
-          </div>
-          <div className='table_hour' style={{gridRow: 17}}>
-            <p>15:00</p>
-          </div>
-
-          <Reservation people='1' time='100'/>
+          <Saturday/>
+          <Reservation people={1} time={100}/>
         </main>
     </app>
   )
