@@ -7,7 +7,7 @@ import Phone from './assets/Phone';
 import WalkIn from './assets/WalkIn';
 const Reservation = ({people = '', time = ''}) => (
     <section className={`reservation people${people} time${time}`}>
-        <div className='reservation_row'>
+        <div className='reservation_row cantselect'>
             <Person height={18} width={18} color='black'/>
             <p>1</p>
             <Clock height={18} width={18} color='black'/>

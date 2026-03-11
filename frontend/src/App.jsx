@@ -45,8 +45,7 @@ function App() {
       <panel>
         <section className='date_section'>
           <ArrowLeft className='clickable' onClick={previousDate}/>
-          <p>{currentDate.toLocaleDateString()}</p>
-          <Callendar className='clickable'/>
+          <input className='calendar' type='date' value={currentDate.toISOString().split("T")[0]}></input>
           <ArrowRight className='clickable' onClick={nextDate}/>
         </section>
         <form className='add_reservation_section'>
@@ -80,7 +79,7 @@ function App() {
         <section className='income_section'>
 
 
-          <div className='income_row'>
+          <div className='income_row cantselect'>
             <p>Obrót dnia:</p>
             </div>
 
