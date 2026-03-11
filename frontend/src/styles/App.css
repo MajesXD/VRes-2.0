@@ -13,6 +13,15 @@ p {
     color: #32BCE0;
 }
 
+.clickable{
+    cursor: pointer;
+    user-select: none;
+}
+
+.cantselect {
+    user-select: none;
+}
+
 panel {
     min-height: 100vh;
     width: 16vw;
@@ -26,16 +35,6 @@ panel p {
 }
 panel svg {
     height: 1vw; 
-
-}
-
-.clickable{
-    cursor: pointer;
-    user-select: none;
-}
-
-.cantselect {
-    user-select: none;
 }
 
 .calendar {
@@ -59,7 +58,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
     .date_section {
         height: 5%;
-        width: 85%;
+        width: 13.5vw;
         margin-top: 1vh;
         display: flex;
         flex-direction: row;
@@ -82,7 +81,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     }
 
         .add_reservation-row {
-            width: 96%;
+            width: 11vw;
             height: 100%;
             display: flex;
             flex-direction: row;
