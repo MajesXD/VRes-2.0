@@ -192,7 +192,7 @@ main::before {
   width: 100%;
   height: 100%;
   backdrop-filter: blur(60px);
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.4);
 }
 
 .table_hour {

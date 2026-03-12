@@ -45,7 +45,11 @@ function App() {
       <panel>
         <section className='date_section'>
           <ArrowLeft className='clickable' onClick={previousDate}/>
-          <input className='calendar' type='date' value={currentDate.toISOString().split("T")[0]}></input>
+          <input className='calendar' type='date'
+          value={currentDate.toISOString().split("T")[0]}
+          onChange={(e) => {setCurrentDate(new Date(e.target.value));}}>
+
+          </input>
           <ArrowRight className='clickable' onClick={nextDate}/>
         </section>
         <form className='add_reservation_section'>
@@ -127,7 +131,7 @@ function App() {
       </panel>
 
         <main>
-          <Week currentDate={currentDate} />
+          <Week currentDate={currentDate}/>
           <Reservation people={1} time={100}/>
         </main>
     </app>
