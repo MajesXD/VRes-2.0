@@ -45,6 +45,7 @@ panel svg {
     border: none;
     color: #32BCE0;
     width: 63%;
+    padding: 0;
 }
 
 .calendar:focus {
