@@ -175,25 +175,13 @@ main {
     flex: 1;
     box-sizing: border-box;
     padding: 5px;
-    background: url("./background.jpg");
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
+    background-color: #1f1f1f;
     position: relative;
     display: grid;
     grid-template-columns: 5% repeat(8, 1fr);
     grid-auto-rows: 30px;
     row-gap: 3px;
     column-gap: 5px;
-}
-main::before {
-  content: "";
-  position: fixed;  
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  backdrop-filter: blur(60px);
-  background: rgba(0,0,0,0.4);
 }
 
 .table_hour {
