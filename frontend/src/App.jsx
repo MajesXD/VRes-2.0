@@ -1,5 +1,5 @@
 import './styles/App.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {colors} from "./assets/colors";
 import ArrowLeft from './assets/ArrowLeft';
 import ArrowRight from './assets/ArrowRight';
@@ -38,10 +38,17 @@ function App() {
     setCurrentDate(newDate); 
   }
 
+  useEffect(() => {
+    fetch("http://127.0.0.1:8000/api/reservations/")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setReservations(data);
+      });
+  }, []);
 
   return (
     <app>
-
       <panel>
         <section className='date_section'>
           <ArrowLeft className='clickable' onClick={previousDate}/>
