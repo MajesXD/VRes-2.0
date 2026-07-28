@@ -14,7 +14,7 @@ import Hourglass from './assets/Hourglass';
 import Plus from './assets/Plus';
 import Transfer from './assets/Transfer';
 import Card from './assets/Card';
-import KmMb from './assets/KmMb';
+import KmMb from './assets/Mb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
 import Reservation from './Reservation';
