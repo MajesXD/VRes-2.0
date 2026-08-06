@@ -17,10 +17,11 @@ import Card from './assets/Card';
 import KmMb from './assets/Mb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
-import Reservation from './Reservation';
+import Reservation from './components/Reservations';
 import Week from './Week';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
+import reservationPlacement from "./utility/reservationPlacement";
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
         setReservations(data);
       });
   }, []);
-
+  const [reservations, setReservations] = useState([]);
   return (
     <app>
       <panel>
@@ -136,10 +137,20 @@ function App() {
           </div>
         </section>
       </panel>
-
         <main>
           <Week currentDate={currentDate}/>
-          <Reservation people={1} time={100}/>
+          {reservations.map((reservation) => (
+            <Reservation
+                key={reservation.id}
+                client={reservation.client}
+                amount={reservation.amount}
+                date={reservation.date}
+                time={reservation.time}
+                duration={reservation.duration}
+                note={reservation.note}
+                style={reservationPlacement(reservation)}
+            />
+        ))}
         </main>
     </app>
   )

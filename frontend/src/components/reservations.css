@@ -9,9 +9,9 @@
     background-color: #32bde0;
     box-sizing: border-box;
     padding: 5px;
-    grid-column: 2/4;
-    grid-row: 9/13;
     z-index: 100;
+    width: 200px;
+    height: 100px;
 }
 
 .reservation p {

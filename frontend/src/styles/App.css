@@ -175,10 +175,7 @@ main {
     flex: 1;
     box-sizing: border-box;
     padding: 5px;
-    background: url("./background.jpg");
-    background-size: cover;
-    background-position: center 30%;
-    background-repeat: no-repeat;
+    background-color: black;
     position: relative;
     display: grid;
     grid-template-columns: 5% repeat(8, 1fr);
