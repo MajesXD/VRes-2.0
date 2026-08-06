@@ -12,6 +12,7 @@
     z-index: 100;
     width: 200px;
     height: 100px;
+    grid-column-start: 2;
 }
 
 .reservation p {

@@ -5,6 +5,7 @@ import Clock from '../assets/Clock';
 import Web from '../assets/Web';
 import Phone from '../assets/Phone';
 import WalkIn from '../assets/WalkIn';
+
 const Reservation = ({
     client,
     amount,

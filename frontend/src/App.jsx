@@ -21,11 +21,15 @@ import Reservation from './components/Reservations';
 import Week from './Week';
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
-import reservationPlacement from "./utility/reservationPlacement";
+// import reservationPlacement from "./utility/reservationPlacement";
+import GridCell from './components/GridCell';
+
+
 
 function App() {
-
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [reservations, setReservations] = useState([]);
+
 
   function previousDate() {
     const newDate = new Date(currentDate);
@@ -47,7 +51,45 @@ function App() {
         setReservations(data);
       });
   }, []);
-  const [reservations, setReservations] = useState([]);
+
+
+  const generateTimes = (currentDate) => {
+      const times = [];
+
+      const day = currentDate.getDay();
+
+      let startHour;
+      let endHour;
+
+      if (day >= 1 && day <= 5) {
+          startHour = 15;
+          endHour = 21;
+      } else if (day === 6) {
+          startHour = 12;
+          endHour = 21;
+      } else if (day === 0) {
+          startHour = 12;
+          endHour = 19;
+      }
+
+      for (let hour = startHour; hour <= endHour; hour++) {
+          for (let minute = 0; minute < 60; minute += 15) {
+
+              if (hour === endHour && minute > 0) {
+                  break;
+              }
+
+              times.push(
+                  `${String(hour).padStart(2, "0")}:${String(minute).padStart(2, "0")}:00`
+              );
+          }
+      }
+
+      return times;
+  };
+
+  const times = generateTimes(currentDate);
+
   return (
     <app>
       <panel>
@@ -138,6 +180,13 @@ function App() {
         </section>
       </panel>
         <main>
+          {times.map((time, index) => (
+            <GridCell
+                key={time}
+                time={time}
+                row={index + 1}
+            />
+        ))}
           <Week currentDate={currentDate}/>
           {reservations.map((reservation) => (
             <Reservation
@@ -148,7 +197,7 @@ function App() {
                 time={reservation.time}
                 duration={reservation.duration}
                 note={reservation.note}
-                style={reservationPlacement(reservation)}
+                style={style}
             />
         ))}
         </main>
