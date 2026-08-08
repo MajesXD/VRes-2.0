@@ -14,7 +14,7 @@ class ReservationShowCreate(generics.ListCreateAPIView):
         if date:
             queryset = queryset.filter(date=date)
 
-        return queryset.order_by("time")
+        return queryset
 
 
 class ReservationUpdateDelete(generics.RetrieveUpdateDestroyAPIView):

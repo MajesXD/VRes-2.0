@@ -13,10 +13,9 @@ const Reservation = ({
     time,
     duration,
     note,
-    style,
 }) => {
     return (
-        <section className="reservation" style={style}>
+        <section className="reservation">
             <div>{client}</div>
             <div>{amount}</div>
             <div>{date}</div>
