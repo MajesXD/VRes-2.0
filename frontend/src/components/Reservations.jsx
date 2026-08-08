@@ -6,29 +6,35 @@ import Web from '../assets/Web';
 import Phone from '../assets/Phone';
 import WalkIn from '../assets/WalkIn';
 
-const Reservation = ({
+
+function Reservation({
     client,
     amount,
     date,
     time,
     duration,
     note,
-}) => {
+    startHour,
+}) {
+    const reservationHour = Number(time.split(":")[0]);
+    const reservationMinute = Number(time.split(":")[1]);
+    let gridRow = (reservationHour - startHour) * 4 + 1;
+    if (reservationMinute === 15) {
+        gridRow += 1;
+    }
+    else if (reservationMinute === 30) {
+        gridRow += 2;
+    }
+    else if (reservationMinute === 45) {
+        gridRow += 3;
+    }
     return (
-        <section className="reservation">
-            <div>{client}</div>
-            <div>{amount}</div>
-            <div>{date}</div>
-            <div>{time}</div>
-            <div>{duration}</div>
-            <div>{note}</div>
-            <Web
-                height={18}
-                width={18}
-                color="black"
-            />
+        <section className="reservation" style={{gridRowStart: gridRow}}>
+            <div>{client} {amount} {date} {time} {duration} {note}</div>
         </section>
     );
 };
+
+
 
 export default Reservation;

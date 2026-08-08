@@ -18,7 +18,7 @@ import KmMb from './assets/Mb';
 import Cash from './assets/Cash';
 import Voucher from './assets/Voucher';
 import Reservation from './components/Reservations';
-import Week from './Week';
+
 import Calendar from "react-calendar";
 import 'react-calendar/dist/Calendar.css';
 // import reservationPlacement from "./utility/reservationPlacement";
@@ -27,9 +27,9 @@ import GridCell from './components/GridCell';
 
 
 function App() {
+  // Wybieranie daty
   const [currentDate, setCurrentDate] = useState(new Date());
   const [reservations, setReservations] = useState([]);
-
 
   function previousDate() {
     const newDate = new Date(currentDate);
@@ -42,9 +42,10 @@ function App() {
     newDate.setDate(currentDate.getDate() + 1);
     setCurrentDate(newDate); 
   }
-
+  // zestringowanie daty do łatwiejszego użycia w niektórych miejscach (szczególnie w API)
   let currentDayString = currentDate.toISOString().split("T")[0];
 
+  // Pobranie rezerwacji z wybraną datą
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/reservations/?date=${currentDayString}`)
       .then(res => res.json())
@@ -54,12 +55,10 @@ function App() {
       });
   }, [currentDate]);
 
-
-  const generateTimes = (currentDate) => {
+  // Tworzenie tabeli - wybiera pierwszą i ostatnią godzinę w zależności od dnia
+  function generateTimes(currentDate) {
       const times = [];
-
       const day = currentDate.getDay();
-
       let startHour;
       let endHour;
 
@@ -73,6 +72,8 @@ function App() {
           startHour = 12;
           endHour = 19;
       }
+
+  // Wybieranie pierwszej rezerwacji w dniu i zwrócenie jej godziny
     const firstReservation = reservations.filter(reservation => {
         const reservationHour = Number(reservation.time.split(":")[0]);
         return reservationHour < startHour;
@@ -85,7 +86,25 @@ function App() {
             )
         );
     }
+    // Wybieranie ostatniej rezerwacji w dniu i zwrócenie jej godziny
+    const lastReservation = reservations.filter(reservation => {
+        const reservationHour = Number(reservation.time.split(":")[0]);
+        const durationHour = Number(reservation.duration.split(":")[0]);
 
+        return reservationHour + durationHour > endHour;
+    });
+
+    if (lastReservation.length > 0) {
+        endHour = Math.max(
+            ...lastReservation.map(reservation => {
+                const reservationHour = Number(reservation.time.split(":")[0]);
+                const durationHour = Number(reservation.duration.split(":")[0]);
+
+                return reservationHour + durationHour;
+            })
+        );
+    }
+    // Tworzenie siatki co 15 minut do późniejszego drag and drop
     for (let hour = startHour; hour <= endHour; hour++) {
         for (let minute = 0; minute < 60; minute += 15) {
 
@@ -98,12 +117,12 @@ function App() {
             );
         }
     }
-
-    return times;
+    return {times, startHour, endHour};
   };
 
+  // Tworzenie godzin
   function Week({currentDate}) {
-      if (currentDate.getDay() === 6) {
+      
       const hours = Array.from(
       { length: endHour - startHour + 1 },
       (_, i) => startHour + i
@@ -114,18 +133,18 @@ function App() {
             <div
             key={hour}
             className="table_hour"
-            style={{ gridRow: (hour - 12) + 1 + (hour - 12) * 3 }}>  
-            <p>{hour}:00</p>
+            style={{ gridRow: (hour - startHour) * 4 + 1 }}>  
+            <p>{String(hour % 24).padStart(2, "0")}:00</p>
             </div>
           ))}
         </>
       );
-      }
     
       return null;
 
   }
-  const times = generateTimes(currentDate);
+
+  const { times, startHour, endHour } = generateTimes(currentDate);
 
   return (
     <app>
@@ -234,6 +253,7 @@ function App() {
                 time={reservation.time}
                 duration={reservation.duration}
                 note={reservation.note}
+                startHour={startHour}
             />
         ))}
         </main>
