@@ -243,19 +243,21 @@ function App() {
                 row={index + 1}
             />
         ))}
+        
           <Week currentDate={currentDate}/>
-          {reservations.map((reservation) => (
-            <Reservation
-                key={reservation.id}
-                client={reservation.client}
-                amount={reservation.amount}
-                date={reservation.date}
-                time={reservation.time}
-                duration={reservation.duration}
-                note={reservation.note}
-                startHour={startHour}
-            />
+            {reservations.map((reservation) => (
+                <Reservation
+                    key={reservation.id}
+                    client={reservation.client}
+                    amount={reservation.amount}
+                    date={reservation.date}
+                    time={reservation.time}
+                    duration={reservation.duration}
+                    note={reservation.note}
+                    startHour={startHour}
+                />
         ))}
+        
         </main>
     </app>
   )
