@@ -177,24 +177,29 @@ main {
     padding: 5px;
     background-color: black;
     position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.hoursField {
+    width: 100px;
     display: grid;
-    grid-template-columns: 5% repeat(8, 1fr);
     grid-auto-rows: 30px;
 }
-main::before {
-  content: "";
-  position: fixed;  
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  
+
+.reservationsField {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 30px;
+    position: relative;
+    flex: 1;
 }
-.reservation-field {
-    grid-column: 2;
-    grid-row: 1 / -1;
-    display: flex;
+
+.reservationsGrid {
+    position: absolute;
+    inset: 0;
 }
-.table_hour {
+.hourSeparator, .gridSeparator {
     display: flex;
     align-items: center;
     grid-column: 1;
@@ -203,11 +208,15 @@ main::before {
     user-select: none;
 }
 
-.table_hour::after {
+.hourSeparator::after, .gridSeparator::after {
     content: "";
     background-color: #ffffff31;
-    width: 1930%;
+    width: 100%;
     height: 1px;
     top: 0;
     position: absolute;
+}
+
+.gridSeparator::after {
+    width: 800%;
 }

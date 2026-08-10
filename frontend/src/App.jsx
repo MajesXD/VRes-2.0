@@ -120,8 +120,8 @@ function App() {
     return {times, startHour, endHour};
   };
 
-  // Tworzenie godzin
-  function Week({currentDate}) {
+  // Tworzenie siatki oddzielnie dla rezrwacji i godzin
+    function HoursGrid({currentDate}) {
       
       const hours = Array.from(
       { length: endHour - startHour + 1 },
@@ -132,7 +132,7 @@ function App() {
           {hours.map(hour => (
             <div
             key={hour}
-            className="table_hour"
+            className="hourSeparator"
             style={{ gridRow: (hour - startHour) * 4 + 1 }}>  
             <p>{String(hour % 24).padStart(2, "0")}:00</p>
             </div>
@@ -141,8 +141,29 @@ function App() {
       );
     
       return null;
-
   }
+  
+    function ReservationsGrid({currentDate}) {
+      
+      const hours = Array.from(
+      { length: endHour - startHour + 1 },
+      (_, i) => startHour + i
+  );
+      return (
+        <>
+          {hours.map(hour => (
+            <div
+            key={hour}
+            className="gridSeparator"
+            style={{ gridRow: (hour - startHour) * 4 + 1 }}>  
+            </div>
+          ))}
+        </>
+      );
+    
+      return null;
+  }
+
 
   const { times, startHour, endHour } = generateTimes(currentDate);
 
@@ -236,28 +257,33 @@ function App() {
         </section>
       </panel>
         <main>
-          {times.map((time, index) => (
-            <GridCell
-                key={time}
-                time={time}
-                row={index + 1}
-            />
-        ))}
-        
-          <Week currentDate={currentDate}/>
-            {reservations.map((reservation) => (
-                <Reservation
-                    key={reservation.id}
-                    client={reservation.client}
-                    amount={reservation.amount}
-                    date={reservation.date}
-                    time={reservation.time}
-                    duration={reservation.duration}
-                    note={reservation.note}
-                    startHour={startHour}
-                />
-        ))}
-        
+
+          <div className='hoursField'>
+            <HoursGrid currentDate={currentDate}/>
+          </div>
+
+          <div className='reservationsField'>
+            {times.map((time, index) => (
+              <GridCell
+                  key={time}
+                  time={time}
+                  row={index + 1}
+              />
+          ))}
+            <ReservationsGrid currentDate={currentDate}/>
+              {reservations.map((reservation) => (
+                  <Reservation
+                      key={reservation.id}
+                      client={reservation.client}
+                      amount={reservation.amount}
+                      date={reservation.date}
+                      time={reservation.time}
+                      duration={reservation.duration}
+                      note={reservation.note}
+                      startHour={startHour}
+                  />
+          ))}
+          </div>
         </main>
     </app>
   )
