@@ -263,26 +263,20 @@ function App() {
           </div>
 
           <div className='reservationsField'>
-            {times.map((time, index) => (
-              <GridCell
-                  key={time}
-                  time={time}
-                  row={index + 1}
+            {reservations.map((reservation) => (
+              <Reservation
+                  key={reservation.id}
+                  client={reservation.client}
+                  amount={reservation.amount}
+                  date={reservation.date}
+                  time={reservation.time}
+                  duration={reservation.duration}
+                  note={reservation.note}
+                  startHour={startHour}
               />
-          ))}
+            ))}
             <ReservationsGrid currentDate={currentDate}/>
-              {reservations.map((reservation) => (
-                  <Reservation
-                      key={reservation.id}
-                      client={reservation.client}
-                      amount={reservation.amount}
-                      date={reservation.date}
-                      time={reservation.time}
-                      duration={reservation.duration}
-                      note={reservation.note}
-                      startHour={startHour}
-                  />
-          ))}
+
           </div>
         </main>
     </app>

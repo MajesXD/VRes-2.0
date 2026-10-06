@@ -19,17 +19,21 @@ function Reservation({
     const reservationHour = Number(time.split(":")[0]);
     const reservationMinute = Number(time.split(":")[1]);
     let gridRow = (reservationHour - startHour) * 4 + 1;
+    let gridHeight = 4;
     if (reservationMinute === 15) {
         gridRow += 1;
+        gridHeight = 1;
     }
     else if (reservationMinute === 30) {
         gridRow += 2;
+        gridHeight = 2;
     }
     else if (reservationMinute === 45) {
         gridRow += 3;
+        gridHeight = 3;
     }
     return (
-        <section className="reservation" style={{gridRowStart: gridRow}}>
+        <section className="reservation" style={{gridRowStart: gridRow, height: `calc(30px * ${gridHeight} - 10px)`, gridColumn: `span ${amount}`}}>
             <div>{client} {amount} {date} {time} {duration} {note}</div>
         </section>
     );

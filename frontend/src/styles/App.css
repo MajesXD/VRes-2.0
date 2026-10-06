@@ -189,36 +189,46 @@ main {
 
 .reservationsField {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
     grid-auto-rows: 30px;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 5px;
     position: relative;
     flex: 1;
+    background: repeating-linear-gradient(
+    to bottom,
+    #ffffff31 0px,
+    #ffffff31 1px,
+    transparent 1px,
+    transparent 120px
+    );
+    background-repeat: repeat;
 }
 
 .reservationsGrid {
     position: absolute;
     inset: 0;
 }
-.hourSeparator, .gridSeparator {
+.hourSeparator {
     display: flex;
     align-items: center;
-    grid-column: 1;
     grid-row: 1;
     position: relative;   
     user-select: none;
 }
 
-.hourSeparator::after, .gridSeparator::after {
+.hourSeparator::after {
     content: "";
     background-color: #ffffff31;
     width: 100%;
     height: 1px;
     top: 0;
+
     position: absolute;
 }
 
 .gridSeparator::after {
     width: 800%;
+
 }
 
 .grid-cell {
