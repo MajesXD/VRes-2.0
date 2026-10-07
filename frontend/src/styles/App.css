@@ -24,7 +24,7 @@ p {
 
 panel {
     min-height: 100vh;
-    width: 16vw;
+    width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -166,8 +166,48 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             color: white;
         }
 
-main {
+
+.mainWrapper {
     min-height: 100vh;
+    height: 100vh;
+    width: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+header {
+    height: 100px;
+    width: auto;
+    background-color: #232629;
+    display: grid;
+    grid-template-columns: 100px repeat(8, 1fr);
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.station {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.station::after {
+    content: '';
+    width: 1px;
+    background-color: #ffffff31;
+    height: 80%;
+    right: 0;
+    position: absolute;
+}
+
+main {
+    min-height: 90vh;
     height: 100vh;
     width: auto;
     overflow-y: auto;
@@ -194,14 +234,6 @@ main {
     column-gap: 5px;
     position: relative;
     flex: 1;
-    /* background: repeating-linear-gradient(
-    to bottom,
-    #ffffff31 0px,
-    #ffffff31 1px,
-    transparent 1px,
-    transparent 120px
-    );
-    background-repeat: repeat; */
 }
 
 .reservationsGrid {

@@ -256,8 +256,21 @@ function App() {
           </div>
         </section>
       </panel>
-        <main>
+      <section className='mainWrapper'>
+        <header>
+          <div className='station'></div>
+          <div className='station'><p>1</p></div>
+          <div className='station'><p>2</p></div>
+          <div className='station'><p>3</p></div>
+          <div className='station'><p>4</p></div>
+          <div className='station'><p>5</p></div>
+          <div className='station'><p>6</p></div>
+          <div className='station'><p>7</p></div>
+          <div className='station'><p>8</p></div>
 
+
+        </header>
+        <main>
           <div className='hoursField'>
             <HoursGrid currentDate={currentDate}/>
             <ReservationsGrid currentDate={currentDate}/>
@@ -277,9 +290,9 @@ function App() {
               />
             ))}
             <ReservationsGrid currentDate={currentDate}/>
-
           </div>
         </main>
+      </section>
     </app>
   )
 }
