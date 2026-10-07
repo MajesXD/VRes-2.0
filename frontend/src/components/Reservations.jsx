@@ -33,8 +33,16 @@ function Reservation({
         gridHeight = 3;
     }
     return (
-        <section className="reservation" style={{gridRowStart: gridRow, height: `calc(30px * ${gridHeight} - 10px)`, gridColumn: `span ${amount}`}}>
-            <div>{client} {amount} {date} {time} {duration} {note}</div>
+        <section className="reservation" 
+        style={{
+        gridRowStart: gridRow, 
+        height: `110px`, 
+        gridColumn: `span ${amount}`,
+        '--grid-row': gridRow,
+        '--grid-height': gridHeight,
+        '--amount': amount,}}
+        >
+            <p>{client} {amount} {date} {time} {duration} {note}</p>
         </section>
     );
 };

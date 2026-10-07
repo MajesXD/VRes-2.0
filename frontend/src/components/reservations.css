@@ -6,16 +6,29 @@
     flex-direction: column;
     margin-top: 5px;
     border-radius: 15px;
-    background-color: #32bde0;
+    background-color: #328ce096;
     box-sizing: border-box;
     padding: 5px;
     z-index: 100;
+    position: relative;
+}
+
+.reservation::before {
+    content: "";
+    border-radius: 15px;
+    background-color: #328ce0;
+    z-index: -1;
+    height: calc(25% * var(--grid-height));
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
 }
 
 .reservation p {
     font-weight: 500;
     font-size: 16px;
-    color: black;
+    color: #072138;
     margin-right: 10px;
 }
 

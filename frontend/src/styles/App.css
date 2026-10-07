@@ -10,7 +10,7 @@ p {
     margin: 0;
     font-weight: 700;
     font-size: 22px;
-    color: #32BCE0;
+    color: #328ce0;
 }
 
 .clickable{
@@ -43,7 +43,7 @@ panel svg {
     font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
     background-color: transparent;
     border: none;
-    color: #32BCE0;
+    color: #328ce0;
     width: 63%;
     padding: 0;
 }
@@ -190,25 +190,25 @@ main {
 .reservationsField {
     display: grid;
     grid-auto-rows: 30px;
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: repeat(8, 1fr) 1px;
     column-gap: 5px;
     position: relative;
     flex: 1;
-    background: repeating-linear-gradient(
+    /* background: repeating-linear-gradient(
     to bottom,
     #ffffff31 0px,
     #ffffff31 1px,
     transparent 1px,
     transparent 120px
     );
-    background-repeat: repeat;
+    background-repeat: repeat; */
 }
 
 .reservationsGrid {
     position: absolute;
     inset: 0;
 }
-.hourSeparator {
+.hourSeparator, .gridSeparator{
     display: flex;
     align-items: center;
     grid-row: 1;
@@ -216,19 +216,20 @@ main {
     user-select: none;
 }
 
-.hourSeparator::after {
+.gridSeparator{
+    grid-column-start: 9;
+}
+.hourSeparator::after, .gridSeparator::after{
     content: "";
     background-color: #ffffff31;
-    width: 100%;
+    width: 95px;
     height: 1px;
     top: 0;
-
     position: absolute;
 }
 
 .gridSeparator::after {
-    width: 800%;
-
+    width: 1900px;
 }
 
 .grid-cell {

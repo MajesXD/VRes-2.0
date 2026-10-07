@@ -260,6 +260,7 @@ function App() {
 
           <div className='hoursField'>
             <HoursGrid currentDate={currentDate}/>
+            <ReservationsGrid currentDate={currentDate}/>
           </div>
 
           <div className='reservationsField'>

@@ -1,4 +1,4 @@
 export const colors = {
-  blue: "#32BCE0",
+  blue: "#328ce0",
   darkBlue: "#165768",
 };
