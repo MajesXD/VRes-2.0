@@ -205,6 +205,17 @@ header {
     right: 0;
     position: absolute;
 }
+.station p {
+    position: absolute;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.iconsMonitor {
+    height: 60px;
+    width: 70px;
+    color: #328ce0;
+}
 
 main {
     min-height: 90vh;

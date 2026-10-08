@@ -1,10 +1,6 @@
 import './reservations.css'
 import {colors} from "../assets/colors";
-import Person from '../assets/Person';
-import Clock from '../assets/Clock';
-import Web from '../assets/Web';
-import Phone from '../assets/Phone';
-import WalkIn from '../assets/WalkIn';
+import * as icons from '../assets';
 
 
 function Reservation({
@@ -57,20 +53,19 @@ function Reservation({
         >
             <p>
                 <div>
-                    <Person color='#072138' height='16px' width='18px'></Person>
+                    <icons.Person color={colors.textDarkBlue} height='16px' width='18px'/>
                     {amount}
                 </div>
                 <div>
-                    <Clock color='#072138' height='16px' width='18px'></Clock>
+                    <icons.Clock color={colors.textDarkBlue} height='16px' width='18px'/>
                     {duration}
                 </div>
             </p>
             <p>
                 <div>
-                    <Phone color='#072138' height='16px' width='18px'></Phone>{client}
+                    <icons.Phone color={colors.textDarkBlue} height='16px' width='18px'/>{client}
                 </div>
             </p>
-            {/* <p>{client} {amount} {date} {time} {duration} {note}</p> */}
         </section>
     );
 };
