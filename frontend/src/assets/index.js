@@ -1,0 +1,16 @@
+export { default as ArrowLeft } from './ArrowLeft';
+export { default as ArrowRight } from './ArrowRight';
+export { default as Callendar } from './Callendar';
+export { default as Web } from './Web';
+export { default as Phone } from './Phone';
+export { default as WalkIn } from './WalkIn';
+export { default as PersonalID } from './PersonalID';
+export { default as Person } from './Person';
+export { default as Clock } from './Clock';
+export { default as Hourglass } from './Hourglass';
+export { default as Plus } from './Plus';
+export { default as Transfer } from './Transfer';
+export { default as Card } from './Card';
+export { default as KmMb } from './Mb';
+export { default as Cash } from './Cash';
+export { default as Voucher } from './Voucher';
