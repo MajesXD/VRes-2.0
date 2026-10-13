@@ -186,7 +186,7 @@ function App() {
             </div>
           <div className='add_reservation-row clickable'>
             <icons.Plus/>
-            <p style={{color: 'white', fontSize: '1vw'}}>Dodaj rezerwację</p>
+            <p className=''>Dodaj rezerwację</p>
             </div>
 
         </form>
