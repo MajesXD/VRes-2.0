@@ -14,6 +14,7 @@ function App() {
   // Wybieranie daty
   const [currentDate, setCurrentDate] = useState(new Date());
   const [reservations, setReservations] = useState([]);
+  const [newResDate, setNewResDate] = useState(currentDate);
 
   function previousDate() {
     const newDate = new Date(currentDate);
@@ -164,26 +165,40 @@ function App() {
           <icons.ArrowRight className='clickable' onClick={nextDate}/>
         </section>
         <form className='add_reservation_section'>
+
           <div className='add_reservation-row'>
             <icons.Web className={"clickable icon_choose"}/>
             <icons.Phone className={"clickable icon_choose"}/>
             <icons.WalkIn className={"clickable icon_choose"}/>
           </div>
+
           <div className='add_reservation-row'>
-            <icons.Calendar color={colors.blue}/><input type="text" />
+            <icons.Calendar color={colors.blue}/>
+            <input type="date" className='adding_dateInput'
+            value={newResDate.toISOString().split("T")[0]}
+            onChange={(e) => {setNewResDate(new Date(e.target.value));}}
+            >
+            </input>
             </div>
+
           <div className='add_reservation-row'>
-            <icons.PersonalID color={colors.blue}/><input type="text" />
+            <icons.PersonalID color={colors.blue}/><input type="text" className='adding_nameInput'/>
             </div>
+
           <div className='add_reservation-row'>
-            <icons.Person color={colors.blue}/><input type="text" />
+            <icons.Person color={colors.blue}/><input type="number" className='adding_amount'
+            defaultValue={2}
+            min={0}/>
             </div>
+
           <div className='add_reservation-row'>
             <icons.Clock color={colors.blue}/><input type="text" />
             </div>
+
           <div className='add_reservation-row'>
             <icons.Hourglass color={colors.blue}/><input type="text" />
             </div>
+            
           <div className='add_reservation-row clickable'>
             <icons.Plus/>
             <p className=''>Dodaj rezerwację</p>

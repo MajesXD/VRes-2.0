@@ -50,7 +50,7 @@ panel svg {
     outline: none;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator {
+.date_section input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     filter: invert(100%) brightness(150%);
   }
@@ -85,8 +85,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
             display: flex;
             flex-direction: row;
             align-items: center;
-            justify-content: space-around;
+            justify-content: start;
+            gap: 10px
         }
+        
         .add_reservation-row:nth-of-type(1) {
             justify-content: center;
             gap: 20px;
@@ -98,6 +100,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
         .add_reservation-row:nth-of-type(7) {
             width: 180px;
+            gap: 0;
         }
 
         .add_reservation-row:nth-of-type(7) p{
@@ -107,11 +110,31 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 
         .add_reservation-row input {
-            height: 40%;
-            width: 75%;
-            font-weight: 600;
+            height: 24px;
+            width: 160px;
             border: none;
             outline: none;
+        }
+
+        .adding_dateInput {
+            width: 130px !important; 
+            height: 28px !important;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        .adding_nameInput{
+            font-weight: 500;
+            font-size: 16px;
+        }
+        .adding_amount {
+            width: 40px !important; 
+            height: 28px !important;
+            font-weight: 600;
+            font-size: 18px;
+
+        }
+        .adding_amount::-webkit-inner-spin-button, .adding_amount::-webkit-outer-spin-button {
+            opacity: 1;
         }
 
     .income_section {
