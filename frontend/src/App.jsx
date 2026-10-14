@@ -187,16 +187,38 @@ function App() {
 
           <div className='add_reservation-row'>
             <icons.Person color={colors.blue}/><input type="number" className='adding_amount'
-            defaultValue={2}
+            defaultValue={1}
             min={0}/>
             </div>
 
           <div className='add_reservation-row'>
-            <icons.Clock color={colors.blue}/><input type="text" />
+            <icons.Clock color={colors.blue}/>
+              <input type='time' step={900}></input>
             </div>
 
           <div className='add_reservation-row'>
-            <icons.Hourglass color={colors.blue}/><input type="text" />
+            <icons.Hourglass color={colors.blue}/>
+              <select defaultValue='01'>
+                <option value="00">0</option>
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select>
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
             </div>
             
           <div className='add_reservation-row clickable'>
