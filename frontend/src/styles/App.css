@@ -99,17 +99,28 @@ panel svg {
         }
 
         .add_reservation-row:nth-of-type(7) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .add_reservation-row button {
+            background-color: transparent;
             width: 180px;
-            gap: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            outline: none;
+            gap: 5px !important;
         }
 
-        .add_reservation-row:nth-of-type(7) p{
+        .add_reservation-row button p{
             color: white;
-            font-size: 18px;
+            font-size: 16px;
         }
 
-
-        .add_reservation-row input {
+        .add_reservation-row input{
             height: 24px;
             width: 160px;
             border: none;
@@ -135,6 +146,12 @@ panel svg {
         }
         .adding_amount::-webkit-inner-spin-button, .adding_amount::-webkit-outer-spin-button {
             opacity: 1;
+        }
+        select {
+            width: 46px !important; 
+            height: 28px !important;
+            font-weight: 600;
+            font-size: 18px;
         }
 
     .income_section {

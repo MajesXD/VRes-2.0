@@ -18,7 +18,7 @@
     border-radius: 15px;
     background-color: #328ce0;
     z-index: -1;
-    height: calc(25% * var(--grid-start));
+    height: calc(var(--grid-height) * 30px - 10px);
     width: 100%;
     top: 0;
     left: 0;

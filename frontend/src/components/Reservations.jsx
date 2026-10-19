@@ -12,6 +12,7 @@ function Reservation({
     note,
     startHour,
 }) {
+    // Wyliczanie kratki rozpoczęcia rezerwacji
     const reservationHour = Number(time.split(":")[0]);
     const reservationMinute = Number(time.split(":")[1]);
     let gridRow = (reservationHour - startHour) * 4 + 1;
@@ -28,6 +29,8 @@ function Reservation({
         gridRow += 3;
         gridStart = 3;
     }
+
+    // Wyliczenie długości kratek rezerwacji
     const durationHour = Number(duration.split(":")[0]);
     const durationMinute = Number(duration.split(":")[1]);
     let gridHeight = durationHour * 4;
@@ -41,15 +44,28 @@ function Reservation({
         gridHeight += 3;
     }
 
+    let gridGhostHeight = 0;
+    if (durationMinute === 15 & durationHour === 0) {
+        gridGhostHeight += 3;
+    }
+    else if (durationMinute === 30 & durationHour === 0) {
+        gridGhostHeight += 2;
+    }
+    else if (durationMinute === 45 & durationHour === 0) {
+        gridGhostHeight += 1;
+    }
+    
     return (
         <section className="reservation" 
         style={{
         gridRowStart: gridRow, 
-        height: `calc(${gridHeight} * 30px - 10px)`, 
+        height: `calc((${gridHeight} + ${gridGhostHeight}) * 30px - 10px)`, 
         gridColumn: `span ${amount}`,
         '--grid-row': gridRow,
         '--grid-start': gridStart,
-        '--amount': amount,}}
+        '--amount': amount,
+        '--grid-height': gridHeight,
+        '--grid-ghost-height': gridGhostHeight,}}
         >
             <p>
                 <div>
@@ -58,7 +74,7 @@ function Reservation({
                 </div>
                 <div>
                     <icons.Clock color={colors.textDarkBlue} height='16px' width='18px'/>
-                    {duration}
+                    {duration.slice(0, 5)}
                 </div>
             </p>
             <p>

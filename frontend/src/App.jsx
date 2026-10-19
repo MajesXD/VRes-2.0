@@ -15,6 +15,14 @@ function App() {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [reservations, setReservations] = useState([]);
   const [newResDate, setNewResDate] = useState(currentDate);
+  const [newResClient, setNewResClient] = useState("");
+  const [newResAmount, setNewResAmount] = useState(1);
+  const [newResHour, setNewResHour] = useState("15");
+  const [newResMinute, setNewResMinute] = useState("00");
+  const [newResDurationHour, setNewResDurationHour] = useState("01");
+  const [newResDurationMinute, setNewResDurationMinute] = useState("00");
+  const [newResNote, setNewResNote] = useState("");
+  const [newResType, setNewResType] = useState("web");
 
   function previousDate() {
     const newDate = new Date(currentDate);
@@ -31,6 +39,7 @@ function App() {
   let currentDayString = currentDate.toISOString().split("T")[0];
 
   // Pobranie rezerwacji z wybraną datą
+  const [refreshReservations, setRefreshReservations] = useState(0);
   useEffect(() => {
     fetch(`http://127.0.0.1:8000/api/reservations/?date=${currentDayString}`)
       .then(res => res.json())
@@ -38,7 +47,7 @@ function App() {
         console.log(data);
         setReservations(data);
       });
-  }, [currentDate]);
+}, [currentDate, refreshReservations]);
 
   // Tworzenie tabeli - wybiera pierwszą i ostatnią godzinę w zależności od dnia
   function generateTimes(currentDate) {
@@ -152,6 +161,42 @@ function App() {
 
   const { times, startHour, endHour } = generateTimes(currentDate);
 
+// Dodawanie rezerwacji
+  const handleAddReservation = async (e) => {
+    e.preventDefault();
+
+    const reservation = {
+      client: newResClient,
+      amount: newResAmount,
+      date: newResDate.toISOString().split("T")[0],
+      time: `${newResHour.padStart(2, "0")}:${newResMinute}`,
+      duration: `${newResDurationHour.padStart(2, "0")}:${newResDurationMinute}`,
+      note: newResNote,
+    };
+
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/reservations/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reservation),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        console.error("Błąd dodawania rezerwacji:", error);
+        return;
+      }
+
+      const data = await response.json();
+      console.log("Dodano rezerwację:", data);
+    } catch (error) {
+      console.error("Błąd połączenia:", error);
+    }
+    setRefreshReservations(prev => prev + 1);
+  };
+
   return (
     <app>
       <panel>
@@ -164,14 +209,16 @@ function App() {
           </input>
           <icons.ArrowRight className='clickable' onClick={nextDate}/>
         </section>
-        <form className='add_reservation_section'>
 
+{/* Dodawanie rezwacji */}
+        <form className='add_reservation_section' onSubmit={handleAddReservation}>
+        {/* Typ rezerwacji */}
           <div className='add_reservation-row'>
             <icons.Web className={"clickable icon_choose"}/>
             <icons.Phone className={"clickable icon_choose"}/>
             <icons.WalkIn className={"clickable icon_choose"}/>
           </div>
-
+        {/* Data rezerwacji */}
           <div className='add_reservation-row'>
             <icons.Calendar color={colors.blue}/>
             <input type="date" className='adding_dateInput'
@@ -180,25 +227,71 @@ function App() {
             >
             </input>
             </div>
-
+        {/* Osoba rezerwująca */}
           <div className='add_reservation-row'>
-            <icons.PersonalID color={colors.blue}/><input type="text" className='adding_nameInput'/>
+            <icons.PersonalID color={colors.blue}/>
+            <input
+              type="text"
+              className="adding_nameInput"
+              value={newResClient}
+              onChange={(e) => setNewResClient(e.target.value)}
+              />
             </div>
-
+        {/* Ilość osób */}
           <div className='add_reservation-row'>
-            <icons.Person color={colors.blue}/><input type="number" className='adding_amount'
-            defaultValue={1}
-            min={0}/>
+            <icons.Person color={colors.blue}/>
+            <input 
+            type="number"
+            className="adding_amount"
+            value={newResAmount}
+            min={0}
+            onChange={(e) => setNewResAmount(Number(e.target.value))}
+            />
             </div>
-
+        {/* Godzina rezerwacji */}
           <div className='add_reservation-row'>
             <icons.Clock color={colors.blue}/>
-              <input type='time' step={900}></input>
+              <select defaultValue='15' value={newResHour} onChange={(e) => setNewResHour(e.target.value)}>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+                <option value="23">23</option>
+                {/* <option value="00">00</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option> */}
+              </select>
+              <select value={newResMinute}onChange={(e) => setNewResMinute(e.target.value)}>
+                <option value="00">00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
             </div>
-
+        {/* Czas trwania */}
           <div className='add_reservation-row'>
             <icons.Hourglass color={colors.blue}/>
-              <select defaultValue='01'>
+              <select
+              defaultValue='01'
+              value={newResDurationHour}
+              onChange={(e) => setNewResDurationHour(e.target.value)}
+              >
                 <option value="00">0</option>
                 <option value="01">1</option>
                 <option value="02">2</option>
@@ -213,19 +306,23 @@ function App() {
                 <option value="11">11</option>
                 <option value="12">12</option>
               </select>
-              <select>
+              <select
+              value={newResDurationMinute}
+              onChange={(e) => setNewResDurationMinute(e.target.value)}
+              >
                 <option value="00">00</option>
                 <option value="15">15</option>
                 <option value="30">30</option>
                 <option value="45">45</option>
               </select>
             </div>
-            
-          <div className='add_reservation-row clickable'>
-            <icons.Plus/>
-            <p className=''>Dodaj rezerwację</p>
-            </div>
-
+        {/* Submit */}
+          <div className='add_reservation-row'>
+            <button type="submit" className='clickable'>
+              <icons.Plus />
+              <p>Dodaj rezerwację</p>
+            </button>
+          </div>
         </form>
 
         <section className='income_section'>
