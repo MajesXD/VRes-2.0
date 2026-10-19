@@ -5,7 +5,7 @@ class Reservation(models.Model):
     amount = models.IntegerField()
     date = models.DateField()
     time = models.TimeField()
-    duration = models.TimeField()
+    duration = models.DurationField()
     note = models.CharField(max_length=255, blank=True)
 
     def __str__(self):

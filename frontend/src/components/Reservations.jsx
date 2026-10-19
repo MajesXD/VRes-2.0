@@ -45,16 +45,16 @@ function Reservation({
     }
 
     let gridGhostHeight = 0;
-    if (durationMinute === 15 & durationHour === 0) {
+    if (durationMinute === 15 && durationHour === 0) {
         gridGhostHeight += 3;
     }
-    else if (durationMinute === 30 & durationHour === 0) {
+    else if (durationMinute === 30 && durationHour === 0) {
         gridGhostHeight += 2;
     }
-    else if (durationMinute === 45 & durationHour === 0) {
+    else if (durationMinute === 45 && durationHour === 0) {
         gridGhostHeight += 1;
     }
-    
+    console.log(duration, durationHour, durationMinute)
     return (
         <section className="reservation" 
         style={{
