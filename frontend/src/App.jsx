@@ -11,7 +11,7 @@ import GridCell from './components/GridCell';
 
 
 function App() {
-  // Wybieranie daty
+  
   const [currentDate, setCurrentDate] = useState(new Date());
   const [reservations, setReservations] = useState([]);
   const [newResDate, setNewResDate] = useState(currentDate);
@@ -23,7 +23,7 @@ function App() {
   const [newResDurationMinute, setNewResDurationMinute] = useState("00");
   const [newResNote, setNewResNote] = useState("");
   const [newResType, setNewResType] = useState("web");
-
+// Wybieranie daty
   function previousDate() {
     const newDate = new Date(currentDate);
     newDate.setDate(currentDate.getDate() - 1);
@@ -170,7 +170,7 @@ function App() {
       amount: newResAmount,
       date: newResDate.toISOString().split("T")[0],
       time: `${newResHour.padStart(2, "0")}:${newResMinute}`,
-      duration: `${newResDurationHour.padStart(2, "0")}:${newResDurationMinute}`,
+      duration: `${String(newResDurationHour).padStart(2, "0")}:${String(newResDurationMinute).padStart(2, "0")}:00`,
       note: newResNote,
     };
 

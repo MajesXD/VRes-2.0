@@ -43,29 +43,23 @@ function Reservation({
     else if (durationMinute === 45) {
         gridHeight += 3;
     }
-
-    let gridGhostHeight = 0;
+    let extraClass = "";
     if (durationMinute === 15 && durationHour === 0) {
-        gridGhostHeight += 3;
+        extraClass = "littleRes";;
     }
-    else if (durationMinute === 30 && durationHour === 0) {
-        gridGhostHeight += 2;
-    }
-    else if (durationMinute === 45 && durationHour === 0) {
-        gridGhostHeight += 1;
-    }
-    console.log(duration, durationHour, durationMinute)
+
     return (
-        <section className="reservation" 
+        <section className={`reservation ${extraClass}`}
         style={{
+        gridRowEnd: `span ${gridHeight}`,
         gridRowStart: gridRow, 
-        height: `calc((${gridHeight} + ${gridGhostHeight}) * 30px - 10px)`, 
+        height: `calc(${gridHeight} * 30px - 10px)`, 
         gridColumn: `span ${amount}`,
         '--grid-row': gridRow,
         '--grid-start': gridStart,
         '--amount': amount,
         '--grid-height': gridHeight,
-        '--grid-ghost-height': gridGhostHeight,}}
+    }}
         >
             <p>
                 <div>
