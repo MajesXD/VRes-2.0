@@ -398,6 +398,7 @@ function App() {
             {reservations.map((reservation) => (
               <Reservation
                   key={reservation.id}
+                  type={reservation.type}
                   client={reservation.client}
                   amount={reservation.amount}
                   date={reservation.date}

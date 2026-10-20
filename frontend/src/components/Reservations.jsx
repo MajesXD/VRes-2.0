@@ -4,6 +4,7 @@ import * as icons from '../assets';
 
 
 function Reservation({
+    type,
     client,
     amount,
     date,
@@ -48,6 +49,13 @@ function Reservation({
         extraClass = "littleRes";;
     }
 
+    const reservationTypes = {
+        1: icons.Web,
+        2: icons.Phone,
+        3: icons.WalkIn,
+    };
+    const ReservationType = reservationTypes[Number(type)];
+
     return (
         <section className={`reservation ${extraClass}`}
         style={{
@@ -70,10 +78,13 @@ function Reservation({
                     <icons.Clock color={colors.textDarkBlue} height='16px' width='18px'/>
                     {duration.slice(0, 5)}
                 </div>
+                <div>
+                    {ReservationType && <ReservationType color={colors.textDarkBlue} height='16px' width='18px'/>}
+                </div>
             </p>
             <p>
                 <div>
-                    <icons.Phone color={colors.textDarkBlue} height='16px' width='18px'/>{client}
+                    <icons.PersonalID color={colors.textDarkBlue} height='16px' width='18px'/>{client}
                 </div>
             </p>
         </section>

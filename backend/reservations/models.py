@@ -1,6 +1,7 @@
 from django.db import models
 
 class Reservation(models.Model):
+    type = models.IntegerField()
     client = models.CharField(max_length=255)
     amount = models.IntegerField()
     date = models.DateField()
